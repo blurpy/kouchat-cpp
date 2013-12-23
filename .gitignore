@@ -17,3 +17,4 @@ Makefile
 moc_*.cpp
 kouchat
 *pro.user
+src-build-Desktop-*
