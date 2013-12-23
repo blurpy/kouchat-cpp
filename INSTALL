@@ -1,0 +1,15 @@
+
+KouChat v0.5.2 C++ Edition
+
+KouChat er avhengig av Qt4.2 eller nyere. Se http://www.trolltech.com/ for nedlasting av SDK.
+
+Bruker du Windows så må du laste ned og installere Platform SDK også (ikke .NET).
+Så må du redigere src.pro i src mappa så win32:LIBS har riktig path.
+
+For å kompilere kode, gå inn i src mappa.
+Skriv qmake
+Skriv så make
+
+Den kjørbare filen ligger i forrige mappe, og kjøres ved å skrive ./kouchat i den mappa.
+
+I Windows så må filene mingwm10.dll, QtCore4.dll, QtGui4.dll, QtNetwork4.dll og QtXml4.dll kopieres hit fra bin mappa der du installerte Qt4 SDK før KouChat kan startes.

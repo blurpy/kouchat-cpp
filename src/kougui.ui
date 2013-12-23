@@ -1,0 +1,182 @@
+<ui version="4.0" >
+ <class>KouGUI</class>
+ <widget class="QMainWindow" name="KouGUI" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>686</width>
+    <height>458</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>KouGUI</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item row="0" column="1" >
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>0</number>
+      </property>
+      <property name="spacing" >
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QListView" name="listView" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>0</hsizetype>
+          <vsizetype>7</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>120</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="resizeMode" >
+         <enum>QListView::Fixed</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>20</width>
+          <height>7</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="tomButton" >
+        <property name="text" >
+         <string>Tøm</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="awayButton" >
+        <property name="text" >
+         <string>Away</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="topicButton" >
+        <property name="text" >
+         <string>Topic</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="minimerButton" >
+        <property name="text" >
+         <string>Minimer</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0" >
+     <widget class="QTextEdit" name="textEdit" />
+    </item>
+    <item row="1" column="0" colspan="2" >
+     <widget class="QLineEdit" name="lineEdit" />
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>686</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFIl" >
+    <property name="title" >
+     <string>&amp;Fil</string>
+    </property>
+    <addaction name="actionMinimer" />
+    <addaction name="separator" />
+    <addaction name="actionAvslutt" />
+   </widget>
+   <widget class="QMenu" name="menuValg" >
+    <property name="title" >
+     <string>&amp;Valg</string>
+    </property>
+    <addaction name="actionT_m_chat" />
+    <addaction name="actionSett_away" />
+    <addaction name="actionEndre_topic" />
+    <addaction name="separator" />
+    <addaction name="actionInnstillinger" />
+   </widget>
+   <widget class="QMenu" name="menuHjelp" >
+    <property name="title" >
+     <string>&amp;Hjelp</string>
+    </property>
+    <addaction name="actionOm" />
+   </widget>
+   <addaction name="menuFIl" />
+   <addaction name="menuValg" />
+   <addaction name="menuHjelp" />
+  </widget>
+  <widget class="QStatusBar" name="statusbar" />
+  <action name="actionMinimer" >
+   <property name="text" >
+    <string>&amp;Minimer</string>
+   </property>
+  </action>
+  <action name="actionAvslutt" >
+   <property name="text" >
+    <string>&amp;Avslutt</string>
+   </property>
+  </action>
+  <action name="actionOm" >
+   <property name="text" >
+    <string>&amp;Om</string>
+   </property>
+  </action>
+  <action name="actionT_m_chat" >
+   <property name="text" >
+    <string>&amp;Tøm chat</string>
+   </property>
+  </action>
+  <action name="actionSett_away" >
+   <property name="text" >
+    <string>&amp;Sett away</string>
+   </property>
+  </action>
+  <action name="actionEndre_topic" >
+   <property name="text" >
+    <string>&amp;Endre topic</string>
+   </property>
+  </action>
+  <action name="actionInnstillinger" >
+   <property name="text" >
+    <string>&amp;Innstillinger</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
