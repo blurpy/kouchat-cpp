@@ -596,7 +596,7 @@ void KouGUI::avsluttknapp()
 
 void KouGUI::omknapp()
 {
-    QMessageBox::information( this, "KouChat - Om", "KouChat v0.5.2\n\nCopyright 2006-2007 Christian Ihle\nkontakt@usikkert.net\nhttp://www.usikkert.net/\n\nKode tilgjengelig under GNU GPLv2.\nSe COPYING for detaljer." );
+    QMessageBox::information( this, "KouChat - Om", "KouChat v0.5.2\n\nCopyright 2006-2007 Christian Ihle\nkontakt@usikkert.net\nhttp://www.usikkert.net/\n\nKode tilgjengelig under GNU GPLv2.\nSe LICENSE for detaljer." );
 }
 
 void KouGUI::innstillingerknapp()
