@@ -11,3 +11,9 @@
 *.lai
 *.la
 *.a
+
+# Other generated files
+Makefile
+moc_*.cpp
+kouchat
+*pro.user
