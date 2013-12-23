@@ -20,7 +20,7 @@
 
 /*
 * TODO:
-* - Sjekke nick-crash ved pÂlogging
+* - Sjekke nick-crash ved p√•logging
 */
 
 #include "kougui.h"
@@ -162,7 +162,7 @@ KouGUI::~KouGUI()
 
 void KouGUI::logon()
 {
-	textEdit->append( hentTid() + "*** Du logget pÂ som " + meg->getNick() + " fra " + meg->getIpadr() + "..." );
+	textEdit->append( hentTid() + "*** Du logget p√• som " + meg->getNick() + " fra " + meg->getIpadr() + "..." );
 }
 
 void KouGUI::fiksTittelOgTray()
@@ -256,7 +256,7 @@ void KouGUI::leggTilText( QString mld, QString ipen )
 			nynick->setSistidle( QDateTime::currentDateTime().toTime_t() );
 			modell->settInnData( nynick );
 			textEdit->setTextColor( innst->hentBeskjedFarge() );
-			textEdit->append( hentTid() + "*** " + mldnick + " logget pÂ fra " + ipen + "..." );
+			textEdit->append( hentTid() + "*** " + mldnick + " logget p√• fra " + ipen + "..." );
 		}
 
 		else if ( type == "EXPOSING" )
@@ -430,7 +430,7 @@ void KouGUI::closeEvent( QCloseEvent *event )
 
 bool KouGUI::avslutt()
 {
-	int svar = QMessageBox::question( this, "KouChat - Avslutte?", "Er du sikker pÂ at du vil avslutte?","&Ja", "&Avbryt", QString(), 0, 1 );
+	int svar = QMessageBox::question( this, "KouChat - Avslutte?", "Er du sikker p√• at du vil avslutte?","&Ja", "&Avbryt", QString(), 0, 1 );
 
 	if ( svar == 0 )
 	{
