@@ -27,6 +27,7 @@
 #include "kougui.h"
 #include "NickDTO.h"
 #include <iostream>
+#include <ctime>
 
 KouGUI::KouGUI( QWidget *parent ) : QMainWindow( parent )
 {
