@@ -1,6 +1,42 @@
 KouChat C++
 ===========
 
+
+This version of KouChat is written in C++, using the Qt4 framework. You need Qt4 and gcc/g++ to compile the source code.
+This is something I wrote while learning to program C++ in school, and is based on an old version of KouChat in Java.
+
+Note: the application is in Norwegian.
+
+
+Steps to compile on Windows:
+1. Download Qt4 for Windows with MinGW (gcc for Windows) from http://qt-project.org/
+2. Download and install the Windows Platform SDK (not .NET).
+3. Clone the KouChat source code to a folder.
+4. Edit 'src.pro' in the src folder so win32:LIBS has the correct path to the Platform SDK.
+5. Start Qt 4.x.x Command Prompt from the start menu.
+6. Navigate to the src folder using the command prompt.
+7. Run 'qmake'
+8. Run 'make'
+9. Copy 'mingwm10.dll', 'QtCore4.dll', 'QtGui4.dll', 'QtNetwork4.dll' and 'QtXml4.dll' to the root folder where kouchat.exe is. You can find those files in the bin folder where you installed Qt4.
+10. Done! You can start the application using kouchat.exe. You can safely delete the src folder.
+Note: The steps have not been verified on Windows since 2007.
+
+Steps to compile on Linux:
+1. Install Qt4 and gcc/g++ using your distribution's package manager.
+2. Clone the KouChat source code to a folder.
+3. Open a terminal.
+4. Navigate to the src folder using the terminal.
+5. Run 'qmake'
+6. Run 'make'
+7. Done! You can start the application using the kouchat binary. You can safely delete the src folder. You can use bilder/kou_normal.png as a shortcut icon.
+
+Steps to compile on Mac:
+1. Probably something like the Windows or Linux method.
+
+Qt Creator can also be used, as a more graphical build tool. It knows what to do with the source code.
+Just remember to set the working directory to the root of the project, or KouChat wont find any resources.
+
+
 Copyright 2006-2007
 Christian Ihle
 kontakt@usikkert.net
