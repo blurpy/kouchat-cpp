@@ -26,28 +26,28 @@
 
 class ListeModell : public QAbstractListModel
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		ListeModell( QObject *parent = 0 );
-		~ListeModell();
-		int rowCount( const QModelIndex &parent = QModelIndex() ) const;
-		QVariant data( const QModelIndex &index, int role ) const;
-		QVariant headerData( int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
-		Qt::ItemFlags flags( const QModelIndex &index ) const;
-		QVariant getData( const QModelIndex &index, int role ) const;
-		QString visInnhold();
-		NickDTO* hentUtData( int rad );
-		void settInnData( NickDTO *dto );
-		bool sjekkOmNy( QString kode );
-		NickDTO* hentFraLista( QString kode );
-		void slettData( NickDTO *dto );
-		QList<NickDTO*>* hentListe();
-		void dataEndra();
-		void sorter();
+    public:
+        ListeModell( QObject *parent = 0 );
+        ~ListeModell();
+        int rowCount( const QModelIndex &parent = QModelIndex() ) const;
+        QVariant data( const QModelIndex &index, int role ) const;
+        QVariant headerData( int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
+        Qt::ItemFlags flags( const QModelIndex &index ) const;
+        QVariant getData( const QModelIndex &index, int role ) const;
+        QString visInnhold();
+        NickDTO* hentUtData( int rad );
+        void settInnData( NickDTO *dto );
+        bool sjekkOmNy( QString kode );
+        NickDTO* hentFraLista( QString kode );
+        void slettData( NickDTO *dto );
+        QList<NickDTO*>* hentListe();
+        void dataEndra();
+        void sorter();
 
-	private:
-		QList<NickDTO*> *liste;
+    private:
+        QList<NickDTO*> *liste;
 };
 
 bool minLessThan( NickDTO *dto1, NickDTO *dto2 );

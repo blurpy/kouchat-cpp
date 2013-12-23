@@ -29,50 +29,50 @@
 
 class KouGUI : public QMainWindow, private Ui::KouGUI
 {
-	Q_OBJECT
-	
-	public:
-		KouGUI( QWidget *parent = 0 );
-		~KouGUI();
-		void leggTilText( QString msg, QString ip );
-		bool isRunning();
+    Q_OBJECT
 
-	protected:
-		 void closeEvent( QCloseEvent *e );
+    public:
+        KouGUI( QWidget *parent = 0 );
+        ~KouGUI();
+        void leggTilText( QString msg, QString ip );
+        bool isRunning();
 
-	private slots:
-		void sendMelding();
-		void idleri();
-		void awayknapp();
-		void topicknapp();
-		void tomknapp();
-		void minimerknapp();
-		void avsluttknapp();
-		void omknapp();
-		void innstillingerknapp();
-		void skriveStatus();
-		void brukknapp();
-		void egenknapp();
-		void beskjedknapp();
-		void nickMeny();
-		void systrayTrykk( QSystemTrayIcon::ActivationReason grunn );
-		void logon();
+    protected:
+         void closeEvent( QCloseEvent *e );
 
-	private:
-		Senderen *senderen;
-		QString topic;
-		QTimer *idletimer;
-		QString hentTid();
-		void fiksTittelOgTray();
-		ListeModell *modell;
-		bool avslutt();
-		NickDTO *meg;
-		InnstillingerGUI *innst;
-		QAction *escAction;
-		QMenu *systrayMenu;
-		QAction *avsluttAction;
-		QSystemTrayIcon *systray;
-		bool running;
+    private slots:
+        void sendMelding();
+        void idleri();
+        void awayknapp();
+        void topicknapp();
+        void tomknapp();
+        void minimerknapp();
+        void avsluttknapp();
+        void omknapp();
+        void innstillingerknapp();
+        void skriveStatus();
+        void brukknapp();
+        void egenknapp();
+        void beskjedknapp();
+        void nickMeny();
+        void systrayTrykk( QSystemTrayIcon::ActivationReason grunn );
+        void logon();
+
+    private:
+        Senderen *senderen;
+        QString topic;
+        QTimer *idletimer;
+        QString hentTid();
+        void fiksTittelOgTray();
+        ListeModell *modell;
+        bool avslutt();
+        NickDTO *meg;
+        InnstillingerGUI *innst;
+        QAction *escAction;
+        QMenu *systrayMenu;
+        QAction *avsluttAction;
+        QSystemTrayIcon *systray;
+        bool running;
 };
 
 #endif

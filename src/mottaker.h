@@ -37,18 +37,18 @@
 
 class Mottaker : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		Mottaker( QWidget *parent = 0 );
-		~Mottaker();
+    public:
+        Mottaker( QWidget *parent = 0 );
+        ~Mottaker();
 
-	private slots:
-		void processPendingDatagrams();
+    private slots:
+        void processPendingDatagrams();
 
-	private:
-		QUdpSocket *udpSocket;
-		KouGUI *enku;
+    private:
+        QUdpSocket *udpSocket;
+        KouGUI *enku;
 };
 
 #endif

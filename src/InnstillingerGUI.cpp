@@ -22,8 +22,8 @@
 
 InnstillingerGUI::InnstillingerGUI( QWidget *parent ) : QDialog( parent )
 {
-	setupUi( this );
-	lesConfig();
+    setupUi( this );
+    lesConfig();
 }
 
 InnstillingerGUI::~InnstillingerGUI()
@@ -33,125 +33,125 @@ InnstillingerGUI::~InnstillingerGUI()
 
 QPushButton* InnstillingerGUI::getBrukButton()
 {
-	return brukButton;
+    return brukButton;
 }
 
 QPushButton* InnstillingerGUI::getEgenButton()
 {
-	return egenButton;
+    return egenButton;
 }
 
 QPushButton* InnstillingerGUI::getBeskjedButton()
 {
-	return beskjedButton;
+    return beskjedButton;
 }
 
 QColor InnstillingerGUI::hentEgenFarge()
 {
-	return egenLabel->palette().color( QPalette::WindowText );
+    return egenLabel->palette().color( QPalette::WindowText );
 }
 
 QColor InnstillingerGUI::hentBeskjedFarge()
 {
-	return beskjedLabel->palette().color( QPalette::WindowText );
+    return beskjedLabel->palette().color( QPalette::WindowText );
 }
 
 void InnstillingerGUI::settEgenFarge( QColor farge )
 {
-	QPalette palette;
-	palette.setColor( QPalette::Active, QPalette::WindowText, farge );
-	egenLabel->setPalette( palette );
+    QPalette palette;
+    palette.setColor( QPalette::Active, QPalette::WindowText, farge );
+    egenLabel->setPalette( palette );
 }
 
 void InnstillingerGUI::settBeskjedFarge( QColor farge )
 {
-	QPalette palette;
-	palette.setColor( QPalette::Active, QPalette::WindowText, farge );
-	beskjedLabel->setPalette( palette );
+    QPalette palette;
+    palette.setColor( QPalette::Active, QPalette::WindowText, farge );
+    beskjedLabel->setPalette( palette );
 }
 
 QString InnstillingerGUI::hentNick()
 {
-	return nickEdit->text();
+    return nickEdit->text();
 }
 
 void InnstillingerGUI::settNick( QString nick )
 {
-	nickEdit->setText( nick );
+    nickEdit->setText( nick );
 }
 
 QDomDocument InnstillingerGUI::hentXML()
 {
-	QDomDocument doc( "kouchat" );
-	QFile fil( "kouchat.xml" );
+    QDomDocument doc( "kouchat" );
+    QFile fil( "kouchat.xml" );
 
-	if ( fil.open( QIODevice::ReadOnly ) )
-		doc.setContent( &fil );
+    if ( fil.open( QIODevice::ReadOnly ) )
+        doc.setContent( &fil );
 
-	fil.close();
-	return doc;
+    fil.close();
+    return doc;
 }
 
 void InnstillingerGUI::lagreXML( QDomDocument doc )
 {
-	QFile fil( "kouchat.xml" );
+    QFile fil( "kouchat.xml" );
 
-	if ( fil.open( QIODevice::ReadWrite ) )
-	{
-		QTextStream str( &fil );
-		doc.save( str, 4 );
-	}
+    if ( fil.open( QIODevice::ReadWrite ) )
+    {
+        QTextStream str( &fil );
+        doc.save( str, 4 );
+    }
 
-	fil.flush();
-	fil.close();
+    fil.flush();
+    fil.close();
 }
 
 void InnstillingerGUI::lesConfig()
 {
-	QDomDocument doc = hentXML();
-	QDomElement docElem = doc.documentElement();
-	QDomNode n = docElem.firstChild();
+    QDomDocument doc = hentXML();
+    QDomElement docElem = doc.documentElement();
+    QDomNode n = docElem.firstChild();
 
-	while ( !n.isNull() )
-	{
-		QDomElement e = n.toElement();
+    while ( !n.isNull() )
+    {
+        QDomElement e = n.toElement();
 
-		if ( !e.isNull() )
-		{
-			if ( e.tagName() == "nick" )
-				nickEdit->setText( e.text() );
-			else if ( e.tagName() == "egenfarge" )
-				settEgenFarge( e.text().toInt() );
-			else if ( e.tagName() == "beskjedfarge" )
-				settBeskjedFarge( e.text().toInt() );
-		}
+        if ( !e.isNull() )
+        {
+            if ( e.tagName() == "nick" )
+                nickEdit->setText( e.text() );
+            else if ( e.tagName() == "egenfarge" )
+                settEgenFarge( e.text().toInt() );
+            else if ( e.tagName() == "beskjedfarge" )
+                settBeskjedFarge( e.text().toInt() );
+        }
 
-		n = n.nextSibling();
-	}
+        n = n.nextSibling();
+    }
 }
 
 void InnstillingerGUI::lagreConfig()
 {
-	QDomDocument doc = hentXML();
-	QDomElement docElem = doc.documentElement();
-	QDomNode n = docElem.firstChild();
+    QDomDocument doc = hentXML();
+    QDomElement docElem = doc.documentElement();
+    QDomNode n = docElem.firstChild();
 
-	while ( !n.isNull() )
-	{
-		QDomElement e = n.toElement();
+    while ( !n.isNull() )
+    {
+        QDomElement e = n.toElement();
 
-		if ( !e.isNull() )
-		{
-			if ( e.tagName() == "nick" )
-				e.replaceChild( doc.createTextNode( nickEdit->text() ), e.firstChild() );
-			else if ( e.tagName() == "egenfarge" )
-				e.replaceChild( doc.createTextNode( QString::number( (signed) hentEgenFarge().rgb() ) ), e.firstChild() );
-			else if ( e.tagName() == "beskjedfarge" )
-				e.replaceChild( doc.createTextNode( QString::number( (signed) hentBeskjedFarge().rgb() ) ), e.firstChild() );
-		}
+        if ( !e.isNull() )
+        {
+            if ( e.tagName() == "nick" )
+                e.replaceChild( doc.createTextNode( nickEdit->text() ), e.firstChild() );
+            else if ( e.tagName() == "egenfarge" )
+                e.replaceChild( doc.createTextNode( QString::number( (signed) hentEgenFarge().rgb() ) ), e.firstChild() );
+            else if ( e.tagName() == "beskjedfarge" )
+                e.replaceChild( doc.createTextNode( QString::number( (signed) hentBeskjedFarge().rgb() ) ), e.firstChild() );
+        }
 
-		n = n.nextSibling();
-	}
+        n = n.nextSibling();
+    }
 
-	lagreXML( doc );
+    lagreXML( doc );
 }

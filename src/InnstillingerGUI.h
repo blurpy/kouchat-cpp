@@ -27,24 +27,24 @@
 
 class InnstillingerGUI : public QDialog, private Ui::InnstillingerGUI
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		InnstillingerGUI( QWidget *parent = 0 );
-		~InnstillingerGUI();
-		QPushButton* getBrukButton();
-		QPushButton* getEgenButton();
-		QPushButton* getBeskjedButton();
-		QColor hentEgenFarge();
-		QColor hentBeskjedFarge();
-		void settEgenFarge( QColor farge );
-		void settBeskjedFarge( QColor farge );
-		QString hentNick();
-		void settNick( QString nick );
-		void lesConfig();
-		void lagreConfig();
-		QDomDocument hentXML();
-		void lagreXML( QDomDocument doc );
+    public:
+        InnstillingerGUI( QWidget *parent = 0 );
+        ~InnstillingerGUI();
+        QPushButton* getBrukButton();
+        QPushButton* getEgenButton();
+        QPushButton* getBeskjedButton();
+        QColor hentEgenFarge();
+        QColor hentBeskjedFarge();
+        void settEgenFarge( QColor farge );
+        void settBeskjedFarge( QColor farge );
+        QString hentNick();
+        void settNick( QString nick );
+        void lesConfig();
+        void lagreConfig();
+        QDomDocument hentXML();
+        void lagreXML( QDomDocument doc );
 };
 
 #endif

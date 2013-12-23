@@ -23,8 +23,8 @@
 
 int main( int argc, char *argv[] )
 {
-	QApplication app( argc, argv );
-	new Mottaker();
+    QApplication app( argc, argv );
+    new Mottaker();
 
         return app.exec();
 }

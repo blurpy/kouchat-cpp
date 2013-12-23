@@ -22,17 +22,17 @@
 
 Senderen::Senderen( QWidget *parent ) : QDialog( parent )
 {
-	udpSocket = new QUdpSocket( this );
+    udpSocket = new QUdpSocket( this );
 }
 
 Senderen::~Senderen()
 {
-	delete udpSocket;
+    delete udpSocket;
 }
 
 void Senderen::sendMsg( QString msg )
 {
-	QByteArray datagram = "";
-	datagram.append( msg );
-	udpSocket->writeDatagram( datagram.data(), datagram.size(), QHostAddress( "224.168.5.200" ), 40556 );
+    QByteArray datagram = "";
+    datagram.append( msg );
+    udpSocket->writeDatagram( datagram.data(), datagram.size(), QHostAddress( "224.168.5.200" ), 40556 );
 }

@@ -22,36 +22,36 @@
 
 Mottaker::Mottaker( QWidget *parent ) : QDialog( parent )
 {
-	struct ip_mreq mreq;
-	
-	mreq.imr_multiaddr.s_addr = inet_addr( "224.168.5.200" ); //htonl( 0xE0A805C8 );
-	mreq.imr_interface.s_addr = INADDR_ANY; //htonl( INADDR_ANY );
+    struct ip_mreq mreq;
 
-	udpSocket = new QUdpSocket( this );
-	udpSocket->bind( QHostAddress( "0.0.0.0" ), 40556, QUdpSocket::ShareAddress );
-	setsockopt( udpSocket->socketDescriptor(), IPPROTO_IP, IP_ADD_MEMBERSHIP, (char*) &mreq, sizeof( mreq ) );
+    mreq.imr_multiaddr.s_addr = inet_addr( "224.168.5.200" ); //htonl( 0xE0A805C8 );
+    mreq.imr_interface.s_addr = INADDR_ANY; //htonl( INADDR_ANY );
 
-	connect( udpSocket, SIGNAL( readyRead() ), this, SLOT( processPendingDatagrams() ) );
+    udpSocket = new QUdpSocket( this );
+    udpSocket->bind( QHostAddress( "0.0.0.0" ), 40556, QUdpSocket::ShareAddress );
+    setsockopt( udpSocket->socketDescriptor(), IPPROTO_IP, IP_ADD_MEMBERSHIP, (char*) &mreq, sizeof( mreq ) );
 
-	enku = new KouGUI();
+    connect( udpSocket, SIGNAL( readyRead() ), this, SLOT( processPendingDatagrams() ) );
+
+    enku = new KouGUI();
 }
 
 Mottaker::~Mottaker()
 {
-	delete udpSocket;
-	delete enku;
+    delete udpSocket;
+    delete enku;
 }
 
 void Mottaker::processPendingDatagrams()
 {
-	while ( udpSocket->hasPendingDatagrams() && enku->isRunning() )
-	{
-		QHostAddress sender;
-		QByteArray datagram;
-		datagram.resize( udpSocket->pendingDatagramSize() );
-		udpSocket->readDatagram( datagram.data(), datagram.size(), &sender );
-		QString msg = tr( datagram.data() );
-		QString ip = sender.toString();
-		enku->leggTilText( msg, ip );
-	}
+    while ( udpSocket->hasPendingDatagrams() && enku->isRunning() )
+    {
+        QHostAddress sender;
+        QByteArray datagram;
+        datagram.resize( udpSocket->pendingDatagramSize() );
+        udpSocket->readDatagram( datagram.data(), datagram.size(), &sender );
+        QString msg = tr( datagram.data() );
+        QString ip = sender.toString();
+        enku->leggTilText( msg, ip );
+    }
 }

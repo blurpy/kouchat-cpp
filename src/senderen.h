@@ -26,15 +26,15 @@
 
 class Senderen : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		Senderen( QWidget *parent = 0 );
-		~Senderen();
-		void sendMsg( QString msg );
+    public:
+        Senderen( QWidget *parent = 0 );
+        ~Senderen();
+        void sendMsg( QString msg );
 
-	private:
-		QUdpSocket *udpSocket;
+    private:
+        QUdpSocket *udpSocket;
 };
 
 #endif

@@ -25,33 +25,33 @@
 
 class NickDTO
 {
-	public:
-		NickDTO();
-		NickDTO( QString n, QString k );
-		NickDTO ( const NickDTO& n );
-		~NickDTO();
-		QString getNick();
-		void setNick( QString n );
-		QString getAwaymsg();
-		void setAwaymsg( QString a );
-		QString getIpadr();
-		void setIpadr( QString i );
-		QString getKode();
-		void setKode( QString k );
-		long getSistidle();
-		void setSistidle( long s );
-		bool getSkriver();
-		void setSkriver( bool s );
-		bool getAway();
-		void setAway( bool a );
-		bool getMeg();
-		void setMeg( bool m );
-		bool operator == ( const NickDTO dto );
+    public:
+        NickDTO();
+        NickDTO( QString n, QString k );
+        NickDTO ( const NickDTO& n );
+        ~NickDTO();
+        QString getNick();
+        void setNick( QString n );
+        QString getAwaymsg();
+        void setAwaymsg( QString a );
+        QString getIpadr();
+        void setIpadr( QString i );
+        QString getKode();
+        void setKode( QString k );
+        long getSistidle();
+        void setSistidle( long s );
+        bool getSkriver();
+        void setSkriver( bool s );
+        bool getAway();
+        void setAway( bool a );
+        bool getMeg();
+        void setMeg( bool m );
+        bool operator == ( const NickDTO dto );
 
-	private:
-		QString nick, awaymsg, ipadr, kode;
-		long sistidle;
-		bool skriver, away, meg;
+    private:
+        QString nick, awaymsg, ipadr, kode;
+        long sistidle;
+        bool skriver, away, meg;
 };
 
 #endif

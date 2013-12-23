@@ -22,36 +22,36 @@
 
 NickDTO::NickDTO()
 {
-	nick = "tom";
-	kode = "";
-	sistidle = 0;
-	awaymsg = "";
-	skriver = false;
-	away = false;
-	ipadr = "";
-	meg = false;
+    nick = "tom";
+    kode = "";
+    sistidle = 0;
+    awaymsg = "";
+    skriver = false;
+    away = false;
+    ipadr = "";
+    meg = false;
 }
 
 NickDTO::NickDTO( QString n, QString k ) : nick( n ), kode( k )
 {
-	sistidle = 0;
-	awaymsg = "";
-	skriver = false;
-	away = false;
-	ipadr = "";
-	meg = false;
+    sistidle = 0;
+    awaymsg = "";
+    skriver = false;
+    away = false;
+    ipadr = "";
+    meg = false;
 }
 
 NickDTO::NickDTO ( const NickDTO& n )
 {
-	nick = n.nick;
-	kode = n.kode;
-	sistidle = n.sistidle;
-	awaymsg = n.awaymsg;
-	skriver = n.skriver;
-	away = n.away;
-	ipadr = n.ipadr;
-	meg = n.meg;
+    nick = n.nick;
+    kode = n.kode;
+    sistidle = n.sistidle;
+    awaymsg = n.awaymsg;
+    skriver = n.skriver;
+    away = n.away;
+    ipadr = n.ipadr;
+    meg = n.meg;
 }
 
 NickDTO::~NickDTO()
@@ -61,102 +61,102 @@ NickDTO::~NickDTO()
 
 bool NickDTO::operator == ( const NickDTO dto )
 {
-	if ( kode != dto.kode )
-		return false;
-	if ( nick != dto.nick )
-		return false;
-	if ( ipadr != dto.ipadr )
-		return false;
-	if ( meg != dto.meg )
-		return false;
-	if ( away != dto.away )
-		return false;
-	if ( awaymsg != dto.awaymsg )
-		return false;
-	if ( sistidle != dto.sistidle )
-		return false;
-	if ( skriver != dto.skriver )
-		return false;
+    if ( kode != dto.kode )
+        return false;
+    if ( nick != dto.nick )
+        return false;
+    if ( ipadr != dto.ipadr )
+        return false;
+    if ( meg != dto.meg )
+        return false;
+    if ( away != dto.away )
+        return false;
+    if ( awaymsg != dto.awaymsg )
+        return false;
+    if ( sistidle != dto.sistidle )
+        return false;
+    if ( skriver != dto.skriver )
+        return false;
 
-	return true;
+    return true;
 }
 
 QString NickDTO::getNick()
 {
-	return nick;
+    return nick;
 }
 
 void NickDTO::setNick( QString n )
 {
-	nick = n;
+    nick = n;
 }
 
 QString NickDTO::getKode()
 {
-	return kode;
+    return kode;
 }
 
 void NickDTO::setKode( QString k )
 {
-	kode = k;
+    kode = k;
 }
 
 bool NickDTO::getSkriver()
 {
-	return skriver;
+    return skriver;
 }
 
 void NickDTO::setSkriver( bool s )
 {
-	skriver = s;
+    skriver = s;
 }
 
 QString NickDTO::getAwaymsg()
 {
-	return awaymsg;
+    return awaymsg;
 }
 
 void NickDTO::setAwaymsg( QString a )
 {
-	awaymsg = a;
+    awaymsg = a;
 }
 
 QString NickDTO::getIpadr()
 {
-	return ipadr;
+    return ipadr;
 }
 
 void NickDTO::setIpadr( QString i )
 {
-	ipadr = i;
+    ipadr = i;
 }
 
 long NickDTO::getSistidle()
 {
-	return sistidle;
+    return sistidle;
 }
 
 void NickDTO::setSistidle( long s )
 {
-	sistidle = s;
+    sistidle = s;
 }
 
 bool NickDTO::getAway()
 {
-	return away;
+    return away;
 }
 
 void NickDTO::setAway( bool a )
 {
-	away = a;
+    away = a;
 }
 
 bool NickDTO::getMeg()
 {
-	return meg;
+    return meg;
 }
 
 void NickDTO::setMeg( bool m )
 {
-	meg = m;
+    meg = m;
 }

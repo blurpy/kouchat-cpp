@@ -22,186 +22,186 @@
 
 ListeModell::ListeModell( QObject *parent ) : QAbstractListModel( parent )
 {
-	liste = new QList<NickDTO*>();
+    liste = new QList<NickDTO*>();
 }
 
 ListeModell::~ListeModell()
 {
-	if ( liste != 0 )
-	{
-		delete liste;
-		liste = 0;
-	}
+    if ( liste != 0 )
+    {
+        delete liste;
+        liste = 0;
+    }
 }
 
 int ListeModell::rowCount( const QModelIndex &parent ) const
 {
-	return liste->count();
+    return liste->count();
 }
 
 QVariant ListeModell::data( const QModelIndex &index, int role ) const
 {
-	if ( !index.isValid() )
-		return QVariant();
-	
-	if ( index.row() >= liste->size() )
-		return QVariant();
-	
-	if ( role == Qt::DisplayRole )
-	{
-		NickDTO *n = liste->at( index.row() );
-		QString nicket = n->getNick();
+    if ( !index.isValid() )
+        return QVariant();
 
-		if ( n->getSkriver() )
-			nicket += " *";
+    if ( index.row() >= liste->size() )
+        return QVariant();
 
-		return QVariant( nicket );
-	}
+    if ( role == Qt::DisplayRole )
+    {
+        NickDTO *n = liste->at( index.row() );
+        QString nicket = n->getNick();
 
-	else if ( role == Qt::FontRole )
-	{
-		NickDTO *n = liste->at( index.row() );
-		QFont fonten;
+        if ( n->getSkriver() )
+            nicket += " *";
 
-		if ( n->getMeg() )
-			fonten.setBold( true );
+        return QVariant( nicket );
+    }
 
-		return QVariant( fonten );
-	}
+    else if ( role == Qt::FontRole )
+    {
+        NickDTO *n = liste->at( index.row() );
+        QFont fonten;
 
-	else if ( role == Qt::TextColorRole )
-	{
-		NickDTO *n = liste->at( index.row() );
-		QColor fargen;
+        if ( n->getMeg() )
+            fonten.setBold( true );
 
-		if ( n->getAway() )
-			fargen.setNamedColor( "grey" );
+        return QVariant( fonten );
+    }
 
-		return QVariant( fargen );
-	}
+    else if ( role == Qt::TextColorRole )
+    {
+        NickDTO *n = liste->at( index.row() );
+        QColor fargen;
 
-	else
-		return QVariant();
+        if ( n->getAway() )
+            fargen.setNamedColor( "grey" );
+
+        return QVariant( fargen );
+    }
+
+    else
+        return QVariant();
 }
 
 QVariant ListeModell::headerData( int section, Qt::Orientation orientation, int role ) const
 {
-	if ( role != Qt::DisplayRole )
-		return QVariant();
-	
-	if ( orientation == Qt::Horizontal )
-		return QString( "Column %1" ).arg( section );
-	else
-		return QString( "Row %1" ).arg( section );
+    if ( role != Qt::DisplayRole )
+        return QVariant();
+
+    if ( orientation == Qt::Horizontal )
+        return QString( "Column %1" ).arg( section );
+    else
+        return QString( "Row %1" ).arg( section );
 }
 
 Qt::ItemFlags ListeModell::flags( const QModelIndex &index ) const
 {
-	if ( !index.isValid() )
-		return Qt::ItemIsEnabled;
-	
-	return QAbstractItemModel::flags( index ) | Qt::ItemIsSelectable;
+    if ( !index.isValid() )
+        return Qt::ItemIsEnabled;
+
+    return QAbstractItemModel::flags( index ) | Qt::ItemIsSelectable;
 }
 
 QString ListeModell::visInnhold()
 {
-	QString res = "";
+    QString res = "";
 
-	for (int i = 0; i < liste->size(); ++i)
-	{
-		NickDTO *n = liste->at( i );
-		res += " " + n->getNick();
-	}
+    for (int i = 0; i < liste->size(); ++i)
+    {
+        NickDTO *n = liste->at( i );
+        res += " " + n->getNick();
+    }
 
-	return res;
+    return res;
 }
 
 NickDTO* ListeModell::hentUtData( int rad )
 {
-	return liste->at( rad );
-	//return liste[rad];
+    return liste->at( rad );
+    //return liste[rad];
 }
 
 void ListeModell::settInnData( NickDTO *dto )
 {
-	int pos = liste->size();
-	beginInsertRows( QModelIndex(), pos, pos );
-	liste->append( dto );
-	endInsertRows();
-	sorter();
-	QModelIndex ind = index( pos, 0 );
-	emit dataChanged( ind, ind );
+    int pos = liste->size();
+    beginInsertRows( QModelIndex(), pos, pos );
+    liste->append( dto );
+    endInsertRows();
+    sorter();
+    QModelIndex ind = index( pos, 0 );
+    emit dataChanged( ind, ind );
 }
 
 void ListeModell::slettData( NickDTO *dto )
 {
-	int pos = liste->indexOf( dto );
-	beginRemoveRows( QModelIndex(), pos, pos );
-	NickDTO *slett = liste->at( pos );
-	liste->removeAt( pos );
-	delete slett;
-	endRemoveRows();
-	QModelIndex ind = index( pos, 0 );
-	emit dataChanged( ind, ind );
+    int pos = liste->indexOf( dto );
+    beginRemoveRows( QModelIndex(), pos, pos );
+    NickDTO *slett = liste->at( pos );
+    liste->removeAt( pos );
+    delete slett;
+    endRemoveRows();
+    QModelIndex ind = index( pos, 0 );
+    emit dataChanged( ind, ind );
 }
 
 NickDTO* ListeModell::hentFraLista( QString kode )
 {
-	NickDTO *dto = 0;
+    NickDTO *dto = 0;
 
-	for ( int i = 0; i < liste->size(); i++ )
-	{
-		NickDTO *temp = liste->at( i );
-		
-		if ( temp->getKode() == kode )
-		{
-			dto = temp;
-			break;
-		}
-	}
-	
-	return dto;
+    for ( int i = 0; i < liste->size(); i++ )
+    {
+        NickDTO *temp = liste->at( i );
+
+        if ( temp->getKode() == kode )
+        {
+            dto = temp;
+            break;
+        }
+    }
+
+    return dto;
 }
 
 bool ListeModell::sjekkOmNy( QString kode )
 {
-	bool ny = true;
-	
-	for ( int i = 0; i < liste->size(); i++ )
-	{
-		NickDTO *temp = liste->at( i );
-		
-		if ( temp->getKode() == kode )
-		{
-			ny = false;
-			break;
-		}
-	}
-	
-	return ny;
+    bool ny = true;
+
+    for ( int i = 0; i < liste->size(); i++ )
+    {
+        NickDTO *temp = liste->at( i );
+
+        if ( temp->getKode() == kode )
+        {
+            ny = false;
+            break;
+        }
+    }
+
+    return ny;
 }
 
 QList<NickDTO*>* ListeModell::hentListe()
 {
-	return liste;
+    return liste;
 }
 
 void ListeModell::dataEndra()
 {
-	QModelIndex start = index( 0, 0 );
-	QModelIndex stopp = index( liste->size(), 0 );
-	emit dataChanged( start, stopp );
+    QModelIndex start = index( 0, 0 );
+    QModelIndex stopp = index( liste->size(), 0 );
+    emit dataChanged( start, stopp );
 }
 
 void ListeModell::sorter()
 {
-	qSort( liste->begin(), liste->end(), minLessThan );
+    qSort( liste->begin(), liste->end(), minLessThan );
 }
 
 bool minLessThan( NickDTO *dto1, NickDTO *dto2 )
 {
-	QString s1 = dto1->getNick();
-	QString s2 = dto2->getNick();
+    QString s1 = dto1->getNick();
+    QString s2 = dto2->getNick();
 
-	return s1.toLower() < s2.toLower();
+    return s1.toLower() < s2.toLower();
 }
