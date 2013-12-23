@@ -51,7 +51,7 @@ void Mottaker::processPendingDatagrams()
         QByteArray datagram;
         datagram.resize( udpSocket->pendingDatagramSize() );
         udpSocket->readDatagram( datagram.data(), datagram.size(), &sender );
-        QString msg = tr( datagram.data() );
+        QString msg = trUtf8( datagram.data() );
         QString ip = sender.toString();
         enku->leggTilText( msg, ip );
     }

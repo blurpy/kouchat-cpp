@@ -164,7 +164,7 @@ KouGUI::~KouGUI()
 
 void KouGUI::logon()
 {
-    textEdit->append( hentTid() + "*** Du logget på som " + meg->getNick() + " fra " + meg->getIpadr() + "..." );
+    textEdit->append( hentTid() + QString::fromUtf8( "*** Du logget på som " ) + meg->getNick() + " fra " + meg->getIpadr() + "..." );
 }
 
 void KouGUI::fiksTittelOgTray()
@@ -213,7 +213,7 @@ QString KouGUI::hentTid()
 
 void KouGUI::leggTilText( QString mld, QString ipen )
 {
-    std::cout << hentTid().toStdString() << mld.toStdString() << std::endl;
+    qDebug() << hentTid() << mld;
 
     QString mldkode = mld;
     mldkode.resize( 8 );
@@ -258,7 +258,7 @@ void KouGUI::leggTilText( QString mld, QString ipen )
             nynick->setSistidle( QDateTime::currentDateTime().toTime_t() );
             modell->settInnData( nynick );
             textEdit->setTextColor( innst->hentBeskjedFarge() );
-            textEdit->append( hentTid() + "*** " + mldnick + " logget på fra " + ipen + "..." );
+            textEdit->append( hentTid() + "*** " + mldnick + QString::fromUtf8( " logget på fra " ) + ipen + "..." );
         }
 
         else if ( type == "EXPOSING" )
@@ -415,7 +415,7 @@ void KouGUI::sendMelding()
         {
             textEdit->setTextColor( innst->hentEgenFarge() );
             textEdit->append( hentTid() + "<" + meg->getNick() + ">: " + msg );
-            senderen->sendMsg( meg->getKode() + "!MSG#" + meg->getNick() + ":[" + QString::number( (signed) innst->hentEgenFarge().rgb() ) + "]" + msg );
+            senderen->sendMsg( meg->getKode() + "!MSG#" + meg->getNick() + ":[" + QString::number( (signed) innst->hentEgenFarge().rgb() ) + "]" + msg.toUtf8() );
         }
 
         lineEdit->clear();
@@ -432,7 +432,7 @@ void KouGUI::closeEvent( QCloseEvent *event )
 
 bool KouGUI::avslutt()
 {
-    int svar = QMessageBox::question( this, "KouChat - Avslutte?", "Er du sikker på at du vil avslutte?","&Ja", "&Avbryt", QString(), 0, 1 );
+    int svar = QMessageBox::question( this, "KouChat - Avslutte?", QString::fromUtf8( "Er du sikker på at du vil avslutte?" ),"&Ja", "&Avbryt", QString(), 0, 1 );
 
     if ( svar == 0 )
     {
@@ -544,7 +544,7 @@ void KouGUI::awayknapp()
             topicButton->setEnabled( false );
             textEdit->setTextColor( innst->hentBeskjedFarge() );
             textEdit->append( hentTid() + "*** Du ble away: " + meg->getAwaymsg() );
-            senderen->sendMsg( meg->getKode() + "!AWAY#" + meg->getNick() + ":" + grunn );
+            senderen->sendMsg( meg->getKode() + "!AWAY#" + meg->getNick() + ":" + grunn.toUtf8() );
         }
     }
 }
@@ -573,7 +573,7 @@ void KouGUI::topicknapp()
             topic = "";
         }
 
-        senderen->sendMsg( meg->getKode() + "!TOPIC#" + meg->getNick() + ":(" + meg->getNick() + ")[0]" + nytopic );
+        senderen->sendMsg( meg->getKode() + "!TOPIC#" + meg->getNick() + ":(" + meg->getNick() + ")[0]" + nytopic.toUtf8() );
         fiksTittelOgTray();
     }
 }
