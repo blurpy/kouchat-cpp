@@ -419,6 +419,7 @@ void KouGUI::sendMelding()
         }
 
         lineEdit->clear();
+        skriveStatus();
     }
 }
 
