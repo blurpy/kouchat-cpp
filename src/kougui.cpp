@@ -560,11 +560,13 @@ void KouGUI::topicknapp()
 
     if ( ok && nytopic != topicen )
     {
+        QString topicTid = QString::number( QDateTime::currentMSecsSinceEpoch() );
+
         if ( nytopic.trimmed().length() > 0 )
         {
             textEdit->setTextColor( innst->hentBeskjedFarge() );
             textEdit->append( hentTid() + "*** Du satt topic til: " + nytopic );
-            topic = "(" + meg->getNick() + ")[0] " + nytopic;
+            topic = "(" + meg->getNick() + ")[" + topicTid + "]" + nytopic;
         }
 
         else
@@ -574,7 +576,7 @@ void KouGUI::topicknapp()
             topic = "";
         }
 
-        senderen->sendMsg( meg->getKode() + "!TOPIC#" + meg->getNick() + ":(" + meg->getNick() + ")[0]" + nytopic.toUtf8() );
+        senderen->sendMsg( meg->getKode() + "!TOPIC#" + meg->getNick() + ":(" + meg->getNick() + ")[" + topicTid + "]" + nytopic.toUtf8() );
         fiksTittelOgTray();
     }
 }
