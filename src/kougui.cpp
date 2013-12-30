@@ -309,7 +309,7 @@ void KouGUI::leggTilText( QString mld, QString ipen )
 
         else if ( type == "EXPOSE" )
         {
-            senderen->sendMsg( meg->getKode() + "!EXPOSING#" + meg->getNick() + ":" + meg->getAwaymsg() );
+            senderen->sendMsg( meg->getKode() + "!EXPOSING#" + meg->getNick() + ":" + meg->getAwaymsg().toUtf8() );
         }
 
         else if ( type == "WRITING" )
@@ -328,7 +328,7 @@ void KouGUI::leggTilText( QString mld, QString ipen )
 
         else if ( type == "GETTOPIC" )
         {
-            senderen->sendMsg( meg->getKode() + "!TOPIC#" + meg->getNick() + ":" + topic );
+            senderen->sendMsg( meg->getKode() + "!TOPIC#" + meg->getNick() + ":" + topic.toUtf8() );
         }
 
         else if ( type == "TOPIC" )
