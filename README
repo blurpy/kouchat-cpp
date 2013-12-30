@@ -2,7 +2,7 @@ KouChat C++
 ===========
 
 
-This version of KouChat is written in C++, using the Qt4 framework. You need Qt4 and gcc/g++ to compile the source code.
+This version of KouChat is written in C++, using the Qt4 framework. You need Qt4 (v4.7 or newer) and gcc/g++ to compile the source code.
 This is something I wrote while learning to program C++ in school, and is based on an old version of KouChat in Java.
 
 Note: the application is in Norwegian.
